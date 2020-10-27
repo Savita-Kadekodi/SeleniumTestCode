@@ -5,8 +5,8 @@
     <classes>
       <class name="com.crm.qa.testcases.LoginTest">
         <methods>
-          <include name="verifyLoginButtinText"/>
           <include name="setUp"/>
+          <include name="getLeftPaneValues"/>
         </methods>
       </class> <!-- com.crm.qa.testcases.LoginTest -->
     </classes>

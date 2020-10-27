@@ -1,8 +1,10 @@
 package com.crm.qa.pages;
 
+import java.util.List;
 import java.util.Random;
 
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.Color;
@@ -36,6 +38,9 @@ public class LoginPage extends TestBase {
  
  @FindBy(xpath="//iframe[@name='intercom-borderless-frame']")
  WebElement welcomeIframe;
+ 
+ @FindBy(xpath="//div[@id='st-2']")
+ WebElement leftPane;
  
  
  
@@ -97,6 +102,41 @@ public class LoginPage extends TestBase {
 	 return LoginBtn.getText();
  }
   
+ 
+ public LoginPage chkLoginBtn_CSSValues(String em, String Pwd) {
+	 WaitForObject(Login);
+	 Login.click();	
+	 WaitForObject(email);
+	 
+ 	 //return theFont size of LoginButton text 
+	 String fontSize= LoginBtn.getCssValue("font-size");
+	 System.out.println("Font size is "+ fontSize);
+	 
+	 String fontWeight = LoginBtn.getCssValue("font-Weight");
+	 System.out.println("Font weight is "+ fontWeight);
+	
+	 String fontStyle = LoginBtn.getCssValue("font-Style");
+	 System.out.println("Font style is "+ fontStyle);
+	 
+	 String textAlign = LoginBtn.getCssValue("text-align");
+	 System.out.println("Text align is "+ textAlign);	 
+	 
+	 String margin = LoginBtn.getCssValue("margin");
+	 System.out.println("Margin added is "+ margin);	 
+	 
+	 String padding = LoginBtn.getCssValue("padding");
+	 System.out.println("Padding added "+ padding);
+	 
+	 return new LoginPage();
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
   
  public HomePage login( String em, String Pwd) {
 	 WaitForObject(Login);
@@ -111,6 +151,26 @@ public class LoginPage extends TestBase {
 	 
 	 return new HomePage();
 	 
+ }
+ 
+ public LoginPage clickFBShareButton() {
+	 
+	 List<WebElement> nameList= leftPane.findElements(By.tagName("div"));
+	 
+	 //Total number of share buttons available
+	 
+	 int shareButtonCount =  nameList.size();
+	 System.out.println("Total no of share buttons in left panel " + shareButtonCount);
+	 
+	 //Click FB share button
+			   
+	 //nameList.get(1).click();
+	 
+	 //or we can use the svg image info added in xpath like this: 
+	 
+	 leftPane.findElement(By.xpath("//img[@src='https://platform-cdn.sharethis.com/img/facebook.svg']")).click();  
+	 	
+	 return new LoginPage();
  }
  
   

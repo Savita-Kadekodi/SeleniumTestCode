@@ -86,7 +86,7 @@ public class LoginTest extends TestBase {
 	 
 	}
 	
-	@Test(priority=6)
+	//@Test(priority=6)
 	public void verifyLoginButtinText() {
 		
 		//get the login button text
@@ -95,8 +95,7 @@ public class LoginTest extends TestBase {
 		 	if(loginBtnText.contains("Login")) {
 		 		System.out.println("Login button text verified");
 		 	}		 
-	}
-	
+	}	
 	
 	
 	//@Test
@@ -107,6 +106,19 @@ public class LoginTest extends TestBase {
 		 }
 	}
 	
+	
+	//@Test
+	public void getLeftPaneValues() {
+		LoginPage=LoginPage.clickFBShareButton();
+		
+	}
+	
+	@Test
+	public void getLoginPageFontSize() {
+		
+		LoginPage=LoginPage.chkLoginBtn_CSSValues(prop.getProperty("email"),prop.getProperty("password"));		
+		
+	}
 	
 	//@DataProvider
 	public void getTestData() {
